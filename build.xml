@@ -8,26 +8,26 @@
 	</path>
 	
 	<target name="init">
-		<mkdir dir="build/classes"/>
-		<mkdir dir="dist" />
+		<mkdir dir="dest"/>
+		<mkdir dir="build" />
 	</target>
 	
 	<target name="compile" depends="init" >
-		<javac destdir="build/classes" debug="true" srcdir="src">
+		<javac srcdir="src" destination="build>
 			<classpath refid="compile.classpath"/>
 		</javac>
 	</target>
 	
-	<target name="war" depends="compile">
-		<war destfile="dist/AntExample.war" webxml="WebContent/WEB-INF/web.xml">
+	<target name="package" depends="compile">
+		<jar srcdir="buildr" destination dir="dest/my1.jar">
 			<fileset dir="WebContent"/>
 			<lib dir="WebContent/WEB-INF/lib"/>
 			<classes dir="build/classes"/>
-		</war>
+		</jar>
 	</target>
 	
 	<target name="clean">
-		<delete dir="dist" />
+		<delete dir="dest" />
 		<delete dir="build" />
 	</target>
 	
